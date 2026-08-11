@@ -33,7 +33,6 @@ function Navbar() {
                     </div>
                 </Link>
 
-                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-6 text-white text-lg font-poppins font-semibold">
 
                     <Link to="/" className={navLinkStyle}>
@@ -58,7 +57,6 @@ function Navbar() {
 
                 </div>
 
-                {/* Desktop Order Button */}
                 <Link
                     to="/menu"
                     className="hidden md:block bg-lime-300 text-green-900 px-4 py-2 rounded-md font-poppins font-semibold hover:bg-lime-400 transition-all duration-300"
@@ -66,7 +64,6 @@ function Navbar() {
                     Order Now
                 </Link>
 
-                {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="md:hidden text-white text-3xl hover:text-lime-300 transition-colors duration-300"
@@ -76,7 +73,6 @@ function Navbar() {
 
             </div>
 
-            {/* Mobile Menu */}
             <div
                 className={`md:hidden overflow-hidden transition-all duration-500 ${isOpen ? "max-h-96 opacity-100 mt-5" : "max-h-0 opacity-0"
                     }`}
