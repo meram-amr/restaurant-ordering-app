@@ -4,6 +4,7 @@ import { LuLeaf } from "react-icons/lu";
 import { MdOutlineWatchLater, MdOutlineEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
+
 function Footer() {
   return (
     <footer className="bg-[#081D14] text-white">
