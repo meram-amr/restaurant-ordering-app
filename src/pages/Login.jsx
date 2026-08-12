@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
-import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const Field = ({
   label,
