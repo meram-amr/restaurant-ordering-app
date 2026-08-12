@@ -42,7 +42,7 @@ function Menu() {
   return (
     <main className="min-h-screen bg-[#f7f6f1]">
       <div className="mx-auto w-full max-w-[900px] px-6 py-10">
-        <header className="text-center">
+        <header className="text-center my-20">
           <p className="font-serif text-[15px] italic text-[#7c8067]">
             Our Menu
           </p>
@@ -64,10 +64,9 @@ function Menu() {
                   leading-none
                   transition-all
                   duration-200
-                  ${
-                    activeCategory === category
-                      ? "border-[#4e5544] bg-[#4e5544] text-white"
-                      : "border-[#bdbcb5] bg-transparent text-[#4c4c47] hover:bg-[#4e5544] hover:text-white"
+                  ${activeCategory === category
+                    ? "border-[#4e5544] bg-[#4e5544] text-white"
+                    : "border-[#bdbcb5] bg-transparent text-[#4c4c47] hover:bg-[#4e5544] hover:text-white"
                   }
                 `}
               >
