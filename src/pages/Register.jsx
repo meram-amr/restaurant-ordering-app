@@ -57,9 +57,8 @@ function Register() {
 
     return (
         <div className="w-full max-w-5xl mx-auto my-6 md:my-10 px-4">
-            <div className="bg-green-950 text-white shadow-lg rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6">
+            <div className="bg-green-950 text-white shadow-lg rounded-2xl p-4 md:p-6 flex flex-col md:flex-row gap-6">
 
-                {/* Image */}
                 <div className="w-full md:w-1/2">
                     <img
                         src={registerImage}
@@ -68,10 +67,8 @@ function Register() {
                     />
                 </div>
 
-                {/* Form Content */}
                 <div className="w-full md:flex-1 flex flex-col items-center text-center justify-center py-4 md:py-8">
 
-                    {/* Logo */}
                     <div className="flex items-center mb-4">
                         <LuLeaf className="text-lime-300 text-xl mr-2" />
 
@@ -88,7 +85,6 @@ function Register() {
                         Create your account to start ordering delicious meals!
                     </p>
 
-                    {/* Form */}
                     <div className="w-full max-w-sm text-black">
                         <form
                             onSubmit={handleSubmit}

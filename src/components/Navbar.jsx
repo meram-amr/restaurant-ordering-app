@@ -13,7 +13,7 @@ function Navbar() {
         "hover:after:w-full";
 
     return (
-        <nav className="bg-green-950 px-5 py-4 shadow-lg">
+        <nav className="bg-[#081D14] px-5 py-4 shadow-lg">
 
             <div className="flex justify-between items-center">
 
