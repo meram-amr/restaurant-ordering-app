@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+
 const Field = ({
   label,
   icon,
@@ -34,8 +34,7 @@ const Field = ({
   </div>
 );
 
-export default function LoginPage() {
-  const navigate = useNavigate();
+export default function LoginPage({ submit }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -67,11 +66,11 @@ export default function LoginPage() {
       );
 
       localStorage.setItem("loggedin", response.data.data.token);
+      localStorage.setItem("role", response.data.data.user.role);
 
       setSuccess("Login successful!");
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+
+      submit("/");
     } catch (err) {
       console.error("Login error:", err);
 
