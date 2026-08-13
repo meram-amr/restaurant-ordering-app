@@ -9,6 +9,7 @@ import MyOrders from "./pages/MyOrders";
 import Login from "./pages/Login";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("role"));
@@ -28,7 +29,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login submit={submit} />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/dashboard" element={<Menu />} />
+        <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/orders" element={<MyOrders />} />
       </Routes>
       <Footer />
