@@ -1,39 +1,86 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Register from "./pages/Register";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import MyOrders from "./pages/MyOrders";
 import Login from "./pages/Login";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+
 import AdminDashboard from "./pages/AdminDashboard";
+import MenuManagement from "./pages/MenuManagement";
+
+import UserLayout from "./layout/UserLayout";
+import AdminLayout from "./layout/AdminLayout";
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("role"));
+  const [user, setUser] = useState(
+    localStorage.getItem("role")
+  );
+
   const navigate = useNavigate();
-  const submit = (e) => {
-    setTimeout(() => {
-      navigate(e);
-      setUser(localStorage.getItem("role"));
-    }, 1000);
+
+  // بعد تسجيل الدخول
+  const submit = () => {
+    const role = localStorage.getItem("role");
+
+    setUser(role);
+
+    if (role === "admin") {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/");
+    }
   };
 
   return (
-    <>
-      <Navbar user={user} setUser={setUser} />
-      <Routes>
+    <Routes>
+
+      {/* ================= USER ================= */}
+
+      <Route
+        element={
+          <UserLayout
+            user={user}
+            setUser={setUser}
+            isAdmin={false}
+          />
+        }
+      >
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login submit={submit} />} />
+
         <Route path="/menu" element={<Menu />} />
-        <Route path="/dashboard" element={<AdminDashboard />} />
+
+        <Route path="/register" element={<Register />} />
+
         <Route path="/orders" element={<MyOrders />} />
-      </Routes>
-      <Footer />
-    </>
+
+        <Route
+          path="/login"
+          element={<Login submit={submit} />}
+        />
+      </Route>
+
+
+      {/* ================= ADMIN ================= */}
+
+      <Route
+        path="/admin"
+        element={<AdminLayout />}
+      >
+        <Route
+          path="dashboard"
+          element={<AdminDashboard />}
+        />
+
+        <Route
+          path="menu-management"
+          element={<MenuManagement />}
+        />
+      </Route>
+
+
+    </Routes>
   );
 }
 

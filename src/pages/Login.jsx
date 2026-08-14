@@ -69,8 +69,8 @@ export default function LoginPage({ submit }) {
       localStorage.setItem("role", response.data.data.user.role);
 
       setSuccess("Login successful!");
+      submit();
 
-      submit("/");
     } catch (err) {
       console.error("Login error:", err);
 

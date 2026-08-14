@@ -8,7 +8,6 @@ import {
   Users,
   CalendarDays,
 } from "lucide-react";
-import Sidebar from "../components/admin/Sidebar";
 import StatCard from "../components/admin/StatCard";
 import RecentOrders from "../components/admin/RecentOrders";
 import MenuPerformance from "../components/admin/MenuPerformance";
@@ -123,89 +122,81 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[#f7f6f1]">
-        <div className="flex min-h-screen">
-          <Sidebar user={user} />
+        <main className="flex flex-1 items-center justify-center p-10">
+          <div className="text-center">
+            <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-[#d7e87b] border-t-[#163528]" />
 
-          <main className="flex flex-1 items-center justify-center p-10">
-            <div className="text-center">
-              <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-[#d7e87b] border-t-[#163528]" />
-
-              <p className="font-poppins text-sm text-[#69716b]">
-                Loading dashboard...
-              </p>
-            </div>
-          </main>
-        </div>
+            <p className="font-poppins text-sm text-[#69716b]">
+              Loading dashboard...
+            </p>
+          </div>
+        </main>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-[#f7f6f1] text-[#24352d]">
-      <div className="flex min-h-screen">
-        <Sidebar user={user} />
+      <main className="flex-1 px-5 py-7 sm:px-8 lg:px-10 lg:py-10">
+        <div className="mx-auto max-w-[1250px]">
+          <div className="mb-10 flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+            <div>
+              <h1 className="font-playfair text-4xl text-[#203229] lg:text-5xl">
+                Dashboard Overview
+              </h1>
 
-        <main className="flex-1 px-5 py-7 sm:px-8 lg:px-12 lg:py-10">
-          <div className="mx-auto max-w-[1250px]">
-            <div className="mb-10 flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-              <div>
-                <h1 className="font-playfair text-4xl text-[#203229] lg:text-5xl">
-                  Dashboard Overview
-                </h1>
-
-                <p className="mt-2 text-sm text-[#6d736e] lg:text-base">
-                  Here's what's happening at Verdeo today.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="hidden h-11 w-64 items-center rounded-md border border-[#deded5] bg-white px-4 lg:flex">
-                  <Search size={17} className="text-[#8c918c]" />
-
-                  <input
-                    placeholder="Search orders, guests..."
-                    className="ml-3 w-full bg-transparent text-sm outline-none placeholder:text-[#999d98]"
-                  />
-                </div>
-
-                <button className="flex h-11 w-11 items-center justify-center rounded-md border border-[#deded5] bg-white text-[#59645d]">
-                  <Bell size={18} />
-                </button>
-              </div>
+              <p className="mt-2 text-sm text-[#6d736e] lg:text-base">
+                Here's what's happening at Verdeo today.
+              </p>
             </div>
 
-            {error && (
-              <div className="mb-6 rounded-md border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-600">
-                {error}
-              </div>
-            )}
+            <div className="flex items-center gap-3">
+              <div className="hidden h-11 w-64 items-center rounded-md border border-[#deded5] bg-white px-4 lg:flex">
+                <Search size={17} className="text-[#8c918c]" />
 
-            <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-              {stats.map((stat) => (
-                <StatCard
-                  key={stat.title}
-                  title={stat.title}
-                  value={stat.value}
-                  change={stat.change}
-                  subtitle={stat.subtitle}
-                  icon={stat.icon}
-                  dark={stat.dark}
+                <input
+                  placeholder="Search orders, guests..."
+                  className="ml-3 w-full bg-transparent text-sm outline-none placeholder:text-[#999d98]"
                 />
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
-              <RecentOrders orders={orders} />
-
-              <div className="space-y-6">
-                <MenuPerformance menu={menu} orders={orders} />
-
-                <LowStockAlert menu={menu} />
               </div>
+
+              <button className="flex h-11 w-11 items-center justify-center rounded-md border border-[#deded5] bg-white text-[#59645d]">
+                <Bell size={18} />
+              </button>
             </div>
           </div>
-        </main>
-      </div>
+
+          {error && (
+            <div className="mb-6 rounded-md border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-600">
+              {error}
+            </div>
+          )}
+
+          <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {stats.map((stat) => (
+              <StatCard
+                key={stat.title}
+                title={stat.title}
+                value={stat.value}
+                change={stat.change}
+                subtitle={stat.subtitle}
+                icon={stat.icon}
+                dark={stat.dark}
+              />
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+            <RecentOrders orders={orders} />
+
+            <div className="space-y-6">
+              <MenuPerformance menu={menu} orders={orders} />
+
+              <LowStockAlert menu={menu} />
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
