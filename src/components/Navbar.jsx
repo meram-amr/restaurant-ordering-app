@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LuLeaf, LuMenu, LuX } from "react-icons/lu";
+import { useCart } from "../context/CartContext";
 
 function Navbar({
   user,
@@ -9,6 +10,8 @@ function Navbar({
   setSidebarOpen
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const { cartCount } = useCart();
 
   const navLinkStyle =
     "relative font-poppins text-white hover:text-lime-300 transition-colors duration-300 " +
@@ -71,6 +74,11 @@ function Navbar({
 
               <Link to="/cart" className={navLinkStyle}>
                 Cart
+                {cartCount > 0 && (
+                  <span className="ml-1 text-lime-300">
+                    ({cartCount})
+                  </span>
+                )}
               </Link>
 
             </div>
@@ -160,6 +168,11 @@ function Navbar({
               className={navLinkStyle}
             >
               Cart
+              {cartCount > 0 && (
+                <span className="ml-1 text-lime-300">
+                  ({cartCount})
+                </span>
+              )}
             </Link>
 
             {user && (

@@ -14,3 +14,17 @@ export const getMyOrders = async (token) => {
 
     return response.data;
 };
+
+export const createOrder = async (orderData, token) => {
+  const response = await axios.post(
+    `${API_URL}/orders`,
+    orderData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};
