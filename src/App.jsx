@@ -18,6 +18,8 @@ import AdminLayout from "./layout/AdminLayout";
 
 import { CartProvider } from "./context/CartContext";
 
+import OrderManagement from "./pages/OrderManagement";
+
 function App() {
   const [user, setUser] = useState(
     localStorage.getItem("role")
@@ -41,8 +43,6 @@ function App() {
   return (
     <CartProvider>
       <Routes>
-
-        {/* ================= USER ================= */}
 
         <Route
           element={
@@ -89,8 +89,6 @@ function App() {
         </Route>
 
 
-        {/* ================= ADMIN ================= */}
-
         <Route
           path="/admin"
           element={<AdminLayout />}
@@ -103,6 +101,11 @@ function App() {
           <Route
             path="menu-management"
             element={<MenuManagement />}
+          />
+
+          <Route
+            path="orders"
+            element={<OrderManagement />}
           />
         </Route>
 

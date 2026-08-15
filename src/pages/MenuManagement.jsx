@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Search, Plus } from "lucide-react";
-import { getMenu,  getunavailableMenu } from "../api/menu";
+import { getMenu, getunavailableMenu } from "../api/menu";
 import CreateMenuModal from "../components/admin/CreateMenuModal";
 import EditMenuModal from "../components/admin/EditMenuModal";
 
@@ -112,49 +112,49 @@ function MenuManagement() {
   );
 
   return (
-    <div className="min-h-screen bg-[#f7f6f1] p-6 text-[#24352d]">
-      <div className="mx-auto max-w-[1250px] lg:px-10 lg:py-10">
-        <div className="mb-10 flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-          <div>
-            <h1 className="font-playfair text-4xl text-[#203229] lg:text-5xl">
-              Menu Management
-            </h1>
+    <main className="min-h-screen bg-[#f7f6f1] px-5 py-8 md:px-8 lg:px-10">
+      <div>
+        <h1 className="font-playfair text-4xl text-[#203229] lg:text-5xl">
+          Menu Management
+        </h1>
 
-            <p className="mt-2 text-sm text-[#6d736e] lg:text-base">
-              Manage your restaurant menu items.
-            </p>
-          </div>
+        <p className="mt-2 text-sm text-[#6d736e] lg:text-base">
+          Manage your restaurant menu items.
+        </p>
+      </div>
 
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div className="flex h-11 w-full items-center rounded-md border border-[#deded5] bg-white px-4 md:w-64">
-              <Search size={17} className="text-[#8c918c]" />
+      <div className="flex flex-col my-8 gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="flex h-11 w-full items-center rounded-md border border-[#deded5] bg-white px-4 md:w-64">
+          <Search size={17} className="text-[#8c918c]" />
 
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search menu..."
-                className="ml-3 w-full bg-transparent text-sm outline-none"
-              />
-            </div>
-
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex items-center justify-center gap-2 rounded-md bg-[#163528] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
-            >
-              <Plus size={18} />
-              Add Menu Item
-            </button>
-          </div>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search menu..."
+            className="ml-3 w-full bg-transparent text-sm outline-none"
+          />
         </div>
 
-        {error && (
+        <button
+          onClick={() => setShowModal(true)}
+          className="flex items-center justify-center gap-2 rounded-md bg-[#163528] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
+        >
+          <Plus size={18} />
+          Add Menu Item
+        </button>
+      </div>
+
+      {
+        error && (
           <div className="mb-6 rounded-md border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-600">
             {error}
           </div>
-        )}
+        )
+      }
 
-        {loading ? (
+      {
+        loading ? (
           <div className="flex justify-center py-20">
             <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#d7e87b] border-t-[#163528]" />
           </div>
@@ -264,26 +264,28 @@ function MenuManagement() {
               )}
             </section>
           </>
-        )}
-      </div>
+        )
+      }
 
       {showModal && (
         <CreateMenuModal
           onClose={() => setShowModal(false)}
           onCreated={handleCreated}
         />
-      )}
+      )
+      }
 
-      {editItem && (
-        <EditMenuModal
-          key={editItem.id}
-          item={editItem}
-          onClose={() => setEditItem(null)}
-          onUpdated={handleUpdated}
-        />
-      )}
-    </div>
-  );
+      {
+        editItem && (
+          <EditMenuModal
+            key={editItem.id}
+            item={editItem}
+            onClose={() => setEditItem(null)}
+            onUpdated={handleUpdated}
+          />
+        )
+      }
+    </main>);
 }
 
 export default MenuManagement;
