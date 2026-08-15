@@ -87,7 +87,7 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
         className={`
        fixed
   left-0
-  top-[84px]
+
   z-40
   flex
   w-[280px]
