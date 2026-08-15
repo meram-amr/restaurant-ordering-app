@@ -10,6 +10,7 @@ import {
   ExternalLink,
   X,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
@@ -47,7 +48,6 @@ const items = [
 ];
 
 export default function Sidebar({ user, isOpen, setIsOpen }) {
-
   const logout = () => {
     localStorage.removeItem("loggedin");
     localStorage.removeItem("role");
@@ -60,6 +60,20 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
     setIsOpen(false);
   };
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 84);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {isOpen && (
@@ -71,32 +85,26 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
 
       <aside
         className={`
-        z-50
-        flex
-        w-[280px]
-        shrink-0
-        flex-col
-        border-r
-        border-[#d8d9d2]
-        bg-[#efeee9]
-        transition-transform
+       fixed
+  left-0
+  top-[84px]
+  z-40
+  flex
+  w-[280px]
+  flex-col
+  border-r
+  border-[#d8d9d2]
+  bg-[#efeee9]
+
+
+        transition-all
         duration-300
-        fixed
-        left-0
-        top-0
-        h-screen
-
+        ${scrolled ? "top-0 h-screen" : "top-[84px] h-[calc(100vh-84px)]"}
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
-
-        lg:static
-        lg:h-auto
         lg:translate-x-0
       `}
       >
-
-
         <div className="flex items-start justify-between px-6 py-5">
-
           <div>
             <Link
               to="/"
@@ -117,16 +125,11 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
           >
             <X size={22} />
           </button>
-
         </div>
 
-
         <nav className="px-3 pt-4">
-
           <div className="space-y-2">
-
             {items.map((item) => {
-
               const Icon = item.icon;
 
               return (
@@ -135,9 +138,10 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
                   to={item.path}
                   onClick={closeSidebar}
                   className={({ isActive }) =>
-                    `flex h-11 items-center gap-4 rounded-md px-4 text-sm font-semibold transition ${isActive
-                      ? "bg-[#d7e87b] text-[#5b6838]"
-                      : "text-[#555d57] hover:bg-[#e1e2d9]"
+                    `flex h-11 items-center gap-4 rounded-md px-4 text-sm font-semibold transition ${
+                      isActive
+                        ? "bg-[#d7e87b] text-[#5b6838]"
+                        : "text-[#555d57] hover:bg-[#e1e2d9]"
                     }`
                   }
                 >
@@ -145,18 +149,12 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
                   {item.label}
                 </NavLink>
               );
-
             })}
-
           </div>
-
         </nav>
 
-
         <div className="mt-auto px-5 pb-7">
-
           <div className="mb-6 border-t border-[#d0d1ca] pt-6">
-
             <Link
               to="/support"
               onClick={closeSidebar}
@@ -173,9 +171,7 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
               <LogOut size={18} />
               Logout
             </button>
-
           </div>
-
 
           <Link
             to="/"
@@ -186,29 +182,20 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
             <ExternalLink size={13} />
           </Link>
 
-
           <div className="flex items-center gap-3">
-
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#d7e87b] text-[#344333]">
               {user?.name?.charAt(0).toUpperCase() || "A"}
             </div>
 
             <div>
-
               <p className="text-sm font-semibold text-[#38423c]">
                 {user?.name || "Admin"}
               </p>
 
-              <p className="text-[10px] text-[#777d78]">
-                {user?.email || ""}
-              </p>
-
+              <p className="text-[10px] text-[#777d78]">{user?.email || ""}</p>
             </div>
-
           </div>
-
         </div>
-
       </aside>
     </>
   );
