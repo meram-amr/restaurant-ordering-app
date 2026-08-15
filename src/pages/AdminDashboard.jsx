@@ -16,7 +16,6 @@ import LowStockAlert from "../components/admin/LowStockAlert";
 const API = "http://localhost:5000/api";
 
 export default function AdminDashboard() {
-  const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,14 +28,6 @@ export default function AdminDashboard() {
       try {
         setLoading(true);
         setError("");
-
-        const meResponse = await axios.get(`${API}/auth/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setUser(meResponse.data?.data || null);
 
         const ordersResponse = await axios.get(`${API}/orders`, {
           headers: {

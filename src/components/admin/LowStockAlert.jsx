@@ -63,7 +63,7 @@ export default function LowStockAlert() {
       )}
 
       <Link
-        to="/menu-management"
+        to="/admin/menu-management"
         className="mt-5 flex h-11 w-full items-center justify-center bg-[#263c32] text-center text-xs font-semibold text-white transition hover:bg-[#162b22]"
       >
         Manage Menu
