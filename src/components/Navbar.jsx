@@ -84,6 +84,25 @@ function Navbar({
             </div>
           </>
         )}
+        {isAdmin && (
+          <>
+            <div className="hidden md:flex items-center space-x-6 text-white text-lg font-poppins font-semibold">
+
+              <Link to="/" className={navLinkStyle}>
+                Home
+              </Link>
+
+            
+
+              <Link to="/admin/dashboard" className={navLinkStyle}>
+                Dashboard
+              </Link>
+
+             
+
+            </div>
+          </>
+        )}
 
         {user ? (
           <button
