@@ -3,15 +3,18 @@ import { Search, Plus } from "lucide-react";
 import { getMenu, getunavailableMenu } from "../api/menu";
 import CreateMenuModal from "../components/admin/CreateMenuModal";
 import EditMenuModal from "../components/admin/EditMenuModal";
+import DeleteMenuModal from "../components/admin/DeleteMenuModal";
 
 function MenuManagement() {
   const [editItem, setEditItem] = useState(null);
+  const [deleteItem, setDeleteItem] = useState(null);
   const [menu, setMenu] = useState([]);
   const [unavailableMenu, setUnavailableMenu] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     fetchMenu();
@@ -62,6 +65,18 @@ function MenuManagement() {
     setEditItem(null);
   };
 
+  const handleDeleted = (id) => {
+  setMenu((prevMenu) =>
+    prevMenu.filter((item) => item.id !== id)
+  );
+
+  setUnavailableMenu((prevMenu) =>
+    prevMenu.filter((item) => item.id !== id)
+  );
+
+  setDeleteItem(null);
+};
+
   const filterMenu = (items) => {
     return items.filter((item) =>
       item.name.toLowerCase().includes(search.toLowerCase()),
@@ -101,12 +116,22 @@ function MenuManagement() {
 
         <p className="mt-3 text-sm text-gray-500">{item.description}</p>
 
-        <button
-          onClick={() => setEditItem(item)}
-          className="mt-5 w-full rounded-md bg-[#163528] py-2.5 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
-        >
-          Edit
-        </button>
+        <div className="mt-5 flex gap-2">
+          <button
+            onClick={() => setEditItem(item)}
+            className="flex-1 rounded-md bg-[#163528] py-2.5 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
+          >
+            Edit
+          </button>
+
+          <button
+            onClick={() => setDeleteItem(item)}
+            className="flex-1 rounded-md border border-red-200 bg-white py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+          >
+            Delete
+          </button>
+        </div>
+
       </div>
     </div>
   );
@@ -251,12 +276,21 @@ function MenuManagement() {
                           Currently Unavailable
                         </div>
 
-                        <button
-                          onClick={() => setEditItem(item)}
-                          className="mt-3 w-full rounded-md bg-[#163528] py-2.5 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
-                        >
-                          Edit
-                        </button>
+                        <div className="mt-3 flex gap-2">
+                          <button
+                            onClick={() => setEditItem(item)}
+                            className="flex-1 rounded-md bg-[#163528] py-2.5 text-sm font-semibold text-white transition hover:bg-[#244b3b]"
+                          >
+                            Edit
+                          </button>
+
+                          <button
+                            onClick={() => setDeleteItem(item)}
+                            className="flex-1 rounded-md border border-red-200 bg-white py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -282,6 +316,15 @@ function MenuManagement() {
             item={editItem}
             onClose={() => setEditItem(null)}
             onUpdated={handleUpdated}
+          />
+        )
+      }
+      {
+        deleteItem && (
+          <DeleteMenuModal
+            item={deleteItem}
+            onClose={() => setDeleteItem(null)}
+            onDeleted={handleDeleted}
           />
         )
       }

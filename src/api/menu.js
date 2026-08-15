@@ -9,6 +9,7 @@ export const getMenu = async (category = "") => {
 
   return response.data;
 };
+
 export const getunavailableMenu = async (category = "") => {
   const response = await axios.get(`${API_URL}/menu`, {
     params: {
@@ -31,9 +32,22 @@ export const createMenuItem = async (data, token) => {
 };
 
 export const updateMenuItem = async (id, data, token) => {
-  return await axios.put(`${API_URL}/menu/${id}`, data, {
+  const response = await axios.put(`${API_URL}/menu/${id}`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+};
+
+export const deleteMenuItem = async (id, token) => {
+  const response = await axios.delete(
+    `${API_URL}/menu/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
 };

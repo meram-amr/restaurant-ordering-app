@@ -25,37 +25,94 @@ function EditMenuModal({ item, onClose, onUpdated }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      setLoading(true);
-      setError("");
+  setError("");
 
-      const token = localStorage.getItem("loggedin");
+  const name = formData.name.trim();
+  const image = formData.image.trim();
+  const description = formData.description.trim();
+  const price = Number(formData.price);
 
-      const response = await updateMenuItem(
-        item.id,
-        {
-          name: formData.name,
-          image: formData.image,
-          category: formData.category,
-          description: formData.description,
-          price: Number(formData.price),
-          available: formData.available,
-        },
-        token,
-      );
+  if (!name) {
+    setError("Item name is required.");
+    return;
+  }
 
-      onUpdated(response.data.data);
-      onClose();
-    } catch (err) {
-      console.error("Update menu error:", err);
+  if (name.length < 2) {
+    setError("Item name must be at least 2 characters.");
+    return;
+  }
 
-      setError(err.response?.data?.message || "Failed to update menu item.");
-    } finally {
-      setLoading(false);
+  if (!image) {
+    setError("Image URL is required.");
+    return;
+  }
+
+  try {
+    new URL(image);
+  } catch {
+    setError("Please enter a valid image URL.");
+    return;
+  }
+
+  if (!formData.category) {
+    setError("Please select a category.");
+    return;
+  }
+
+  if (!description) {
+    setError("Description is required.");
+    return;
+  }
+
+  if (formData.price === "") {
+    setError("Price is required.");
+    return;
+  }
+
+  if (Number.isNaN(price) || price <= 0) {
+    setError("Price must be greater than 0.");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const token = localStorage.getItem("loggedin");
+
+    if (!token) {
+      setError("You must be logged in as an admin.");
+      return;
     }
-  };
+
+    const response = await updateMenuItem(
+      item.id,
+      {
+        name,
+        image,
+        category: formData.category,
+        description,
+        price,
+        available: formData.available,
+      },
+      token
+    );
+
+    onUpdated(response.data);
+    onClose();
+
+  } catch (err) {
+    console.error("Update menu error:", err);
+
+    setError(
+      err.response?.data?.message ||
+      "Failed to update menu item."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
@@ -103,6 +160,7 @@ function EditMenuModal({ item, onClose, onUpdated }) {
 
               <input
                 name="image"
+                type="url"
                 value={formData.image}
                 onChange={handleChange}
                 required
@@ -153,7 +211,7 @@ function EditMenuModal({ item, onClose, onUpdated }) {
               <input
                 name="price"
                 type="number"
-                min="0"
+                min="0.01"
                 step="0.01"
                 value={formData.price}
                 onChange={handleChange}
