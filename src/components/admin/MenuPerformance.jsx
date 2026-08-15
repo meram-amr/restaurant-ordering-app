@@ -7,10 +7,7 @@ export default function MenuPerformance({ menu = [], orders = [] }) {
         if (!Array.isArray(order.items)) return;
 
         order.items.forEach((item) => {
-          const itemId =
-            item.menuItem?.id ||
-            item.product?.id;
-
+          const itemId = item.menuItemId;
           const menuId = menuItem.id;
 
           if (itemId && menuId && String(itemId) === String(menuId)) {
@@ -29,6 +26,8 @@ export default function MenuPerformance({ menu = [], orders = [] }) {
     .slice(0, 5);
 
   const max = Math.max(...performance.map((item) => item.orders), 1);
+
+  console.log(performance);
 
   return (
     <section className="rounded-lg border border-[#deded5] bg-white p-6">
