@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import MyOrders from "./pages/MyOrders";
@@ -60,6 +61,11 @@ function App() {
           <Route
             path="/menu"
             element={<Menu />}
+          />
+
+          <Route
+            path="/about"
+            element={<About />}
           />
 
           <Route
