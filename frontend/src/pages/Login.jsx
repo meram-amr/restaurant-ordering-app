@@ -88,7 +88,7 @@ export default function LoginPage({ submit }) {
         <div className="grid w-full grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-[80px]">
           <div className="h-[540px] w-full overflow-hidden rounded-[3px] sm:h-[600px] md:h-[620px] lg:h-[650px]">
             <img
-              src="/public/Pasted image  .png"
+              src="/public/Pasted image.png"
               alt="Grilled salmon with vegetables"
               className="h-full w-full object-cover rounded-[30px]"
             />
