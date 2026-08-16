@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1786534434434",
+    "name": "Admin",
+    "email": "admin@techmaster.com",
+    "password": "$2a$10$4VizI0/Vq1tCdvBxfuszg.JHyz4fkCre3msnPOAU1R7.e2FJLvcMy",
+    "role": "admin",
+    "createdAt": "2026-08-12T11:33:54.434Z"
+  },
+  {
+    "id": "1786536783672",
+    "name": "Ahmed",
+    "email": "ahmed@gmail.com",
+    "password": "$2a$10$qyK5roJ10tU.3PazccRDx.phjWETZd4VmKpZmguOso1fAWR1IwOZC",
+    "role": "user",
+    "createdAt": "2026-08-12T12:13:03.672Z"
+  }
+]

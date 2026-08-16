@@ -1,0 +1,292 @@
+[
+  {
+    "id": "1",
+    "name": "Chicken Shawarma Wrap",
+    "category": "Main Course",
+    "price": 120,
+    "description": "Grilled chicken shawarma with garlic sauce, pickles, and fries in a warm wrap.",
+    "image": "https://i.pinimg.com/1200x/f9/47/c6/f947c6654d999b82946dbc28e73efbf4.jpg",
+    "available": false,
+    "createdAt": "2026-01-05T10:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "name": "Grilled Kofta Platter",
+    "category": "Main Course",
+    "price": 180,
+    "description": "Char-grilled beef kofta served with rice, salad, and tahini sauce.",
+    "image": "https://i.pinimg.com/1200x/c3/38/f8/c338f8af8298d9c666a1bd6576515ba4.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:10:00.000Z"
+  },
+  {
+    "id": "4",
+    "name": "Molokhia with Rabbit",
+    "category": "Main Course",
+    "price": 210,
+    "description": "Traditional molokhia stew served with rice and your choice of protein.",
+    "image": "https://i.pinimg.com/1200x/ef/a7/72/efa772f08fa8497207ce77a52f8081f1.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:15:00.000Z"
+  },
+  {
+    "id": "5",
+    "name": "Beef Burger",
+    "category": "Main Course",
+    "price": 150,
+    "description": "This is packed with two juicy beef patties, melted cheddar cheese, and a creamy homemade burger sauce. ",
+    "image": "https://i.pinimg.com/736x/35/d0/6c/35d06c6c350f94b6aad308580601d1b7.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "6",
+    "name": "Chicken Alfredo",
+    "category": "Main Course",
+    "price": 180,
+    "description": " Creamy Chicken Alfredo made with tender grilled chicken, fettuccine pasta, and a rich Parmesan sauce.",
+    "image": "https://i.pinimg.com/736x/73/1b/15/731b156759585df8fd9569e6fb83fdd8.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "7",
+    "name": "Grilled Salmon",
+    "category": "Main Course",
+    "price": 200,
+    "description": "A healthy, protein packed seafood meal that's perfect for lunch or dinner.",
+    "image": "https://i.pinimg.com/736x/7c/d8/8b/7cd88b8c873f2759052d48ba1ef6c7df.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "8",
+    "name": "Chicken Supreme Pizza",
+    "category": "Main Course",
+    "price": 195,
+    "description": "Crispy golden crust, juicy grilled chicken, gooey mozzarella cheese, and colorful fresh vegetables.",
+    "image": "https://i.pinimg.com/736x/00/29/29/002929ec80f7568cac9dc6573b91f2bb.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "9",
+    "name": "Chicken Mushroom Rice",
+    "category": "Main Course",
+    "price": 110,
+    "description": "Sauté golden chicken breasts and let them mingle with savory mushrooms and aromatic garlic.",
+    "image": "https://i.pinimg.com/736x/a6/10/3f/a6103f3455ee032b30922c3962ed29ab.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "10",
+    "name": "Fattoush Salad",
+    "category": "Appetizer",
+    "price": 55,
+    "description": "Crisp mixed greens, tomatoes, and toasted pita with pomegranate dressing.",
+    "image": "https://i.pinimg.com/736x/79/ee/05/79ee054897ac533714bd5553a729774d.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:20:00.000Z"
+  },
+  {
+    "id": "11",
+    "name": "Cheese Sambousek (6 pcs)",
+    "category": "Appetizer",
+    "price": 70,
+    "description": "Crispy pastry pockets filled with melted cheese, juicy fried golden.",
+    "image": "https://i.pinimg.com/736x/f1/da/ec/f1daec5daa9ad36eaa422c6d0f906c6e.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:25:00.000Z"
+  },
+  {
+    "id": "12",
+    "name": "Potato Balls",
+    "category": "Appetizer",
+    "price": 50,
+    "description": "Loaded Mashed Potato Balls are SO much better than tater tots.",
+    "image": "https://i.pinimg.com/1200x/a8/10/54/a81054f5fa8cb2a87288c87d335a7f54.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "13",
+    "name": "Bruschetta",
+    "category": "Appetizer",
+    "price": 60,
+    "description": "Made with toasted bread, juicy tomatoes, fresh basil, garlic, extra virgin olive oil, and a splash of balsamic glaze, it's simple to prepare and ready in just minutes.",
+    "image": "https://i.pinimg.com/1200x/ed/31/46/ed3146389112ffd0e6ff577300719449.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "14",
+    "name": "Loaded Nachos",
+    "category": "Appetizer",
+    "price": 25,
+    "description": "Layers of crispy chips, melted cheese, and savory toppings create a crowd-pleasing feast perfect for game day or casual gatherings.",
+    "image": "https://i.pinimg.com/1200x/21/b5/a1/21b5a14d2d82108e4698f170f8f84f9c.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "15",
+    "name": "Mozarella Sticks",
+    "category": "Appetizer",
+    "price": 45,
+    "description": "A mouthwatering plate of golden, crispy mozzarella sticks, with one broken open to show the gooey, melted cheese pull, served with a side of rich marinara sauce.",
+    "image": "https://i.pinimg.com/736x/7e/39/f1/7e39f1ad2abfcf9e1d0cc9534fe090f9.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "16",
+    "name": "Garlic Bread",
+    "category": "Appetizer",
+    "price": 35,
+    "description": "Perfect for busy weeknights, pasta dinners, or when you need a fast, crowd-pleasing appetizer.",
+    "image": "https://i.pinimg.com/1200x/91/4a/a2/914aa2292c8bace71062478695f8fb86.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "17",
+    "name": "Crispy Chicken Bites",
+    "category": "Appetizer",
+    "price": 70,
+    "description": "Try this quick and easy homemade chicken popcorn recipe that is perfectly golden, crispy, and juicy on the inside!",
+    "image": "https://i.pinimg.com/736x/fb/b5/c8/fbb5c885e546057dfc6903c7e5c308e3.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "18",
+    "name": "Onion Rings",
+    "category": "Appetizer",
+    "price": 20,
+    "description": "Beer battered onion rings are super crispy, simple to make and loaded with flavor.",
+    "image": "https://i.pinimg.com/736x/67/47/c5/6747c5c4cfb80a9fe16b7b65a6b07cd2.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "19",
+    "name": "Umm Ali",
+    "category": "Dessert",
+    "price": 60,
+    "description": "Warm Egyptian bread pudding with milk, nuts, and raisins.",
+    "image": "https://i.pinimg.com/736x/c4/ad/14/c4ad14f2d63e9ecce4b1c7e62b6d98d6.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:30:00.000Z"
+  },
+  {
+    "id": "20",
+    "name": "Kunafa Slice",
+    "category": "Dessert",
+    "price": 75,
+    "description": "Crispy shredded pastry layered with sweet cheese and syrup.",
+    "image": "https://i.pinimg.com/736x/21/51/6f/21516f37d3cbc09ff984aba8716b67da.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:35:00.000Z"
+  },
+  {
+    "id": "21",
+    "name": "Vanilla Ice Cream",
+    "category": "Dessert",
+    "price": 25,
+    "description": "A Classic Dessert Made Fresh & Creamy.",
+    "image": "https://i.pinimg.com/1200x/fa/44/49/fa44493d2a5c4e54de43e04c4c1a7653.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "22",
+    "name": "Caramel Pudding",
+    "category": "Dessert",
+    "price": 55,
+    "description": "Flan is a creamy, silky custard dessert topped with a layer of rich caramel with extra of nuts that make it mix of juicy and crunchy.",
+    "image": "https://i.pinimg.com/736x/f5/f9/a0/f5f9a01b0d7b712948a5ee44c4d6fb0a.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "23",
+    "name": "Strawberry Cheesecake",
+    "category": "Dessert",
+    "price": 50,
+    "description": "A creamy layered cheesecake infused with fresh strawberry compote and finished with a crunchy, nostalgic shortcake crumble.",
+    "image": "https://i.pinimg.com/1200x/de/a0/1a/dea01a87b4e0389b06ea43a19e6af30c.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "24",
+    "name": "Pancakes",
+    "category": "Dessert",
+    "price": 40,
+    "description": "Start your morning with the ultimate fluffy American pancake stack topped with fresh strawberries, syrup, and buttery goodness.",
+    "image": "https://i.pinimg.com/736x/7c/4d/d1/7c4dd1957b7525fa1520644603d1efe2.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "5",
+    "name": "Fresh Mango Juice",
+    "category": "Beverage",
+    "price": 45,
+    "description": "Freshly blended seasonal mango juice, no added sugar.",
+    "image": "https://i.pinimg.com/736x/b0/fd/b6/b0fdb6c331f0f99a060cbc1b742c7208.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:40:00.000Z"
+  },
+  {
+    "id": "26",
+    "name": "Iced Latte",
+    "category": "Beverage",
+    "price": 65,
+    "description": "Cold milk is heavier than fresh espresso.",
+    "image": "https://i.pinimg.com/736x/6b/ea/97/6bea97bcfffe35012b50aa71d6bd2295.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "27",
+    "name": "Hibiscus Tea (Karkade)",
+    "category": "Beverage",
+    "price": 30,
+    "description": "Chilled hibiscus tea, a classic Egyptian favorite.",
+    "image": "https://i.pinimg.com/736x/51/0c/29/510c296e42d67a21b153d01e661a1614.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "28",
+    "name": "Cappuccino",
+    "category": "Beverage",
+    "price": 35,
+    "description": "Enjoy a comforting cup of cappuccino topped with whipped cream, perfect for relaxing moments in a cozy café setting.",
+    "image": "https://i.pinimg.com/736x/3d/63/a7/3d63a7cc9e5a8b13fd393af0c275fd99.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "29",
+    "name": "Lemon Mint",
+    "category": "Beverage",
+    "price": 45,
+    "description": ". A bright lemon wheel perches on the rim beside a sprig of fresh mint, its green leaves adding a burst of color.",
+    "image": "https://i.pinimg.com/736x/b4/2c/0b/b42c0b79ca1f65f25e2a8a8ed4af9e3c.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  },
+  {
+    "id": "30",
+    "name": "Blueberry Smoothie",
+    "category": "Beverage",
+    "price": 55,
+    "description": "Blueberry Almond Smoothie A refreshing and nutrient-packed smoothie for breakfast or a snack. ",
+    "image": "https://i.pinimg.com/1200x/d3/a9/a0/d3a9a05d59704f6066a71d1f92994124.jpg",
+    "available": true,
+    "createdAt": "2026-01-05T10:45:00.000Z"
+  }
+]
