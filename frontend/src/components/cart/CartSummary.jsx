@@ -26,7 +26,7 @@ function CartSummary() {
         <span>Subtotal</span>
 
         <span>
-          ${Number(subtotal).toFixed(2)}
+          {Number(subtotal).toFixed(2)} EGP
         </span>
       </div>
 
@@ -38,7 +38,7 @@ function CartSummary() {
         </span>
 
         <span className="text-lg font-bold text-[#25251f]">
-          ${Number(subtotal).toFixed(2)}
+          {Number(subtotal).toFixed(2)} EGP
         </span>
       </div>
 

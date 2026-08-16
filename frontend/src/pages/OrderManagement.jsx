@@ -279,7 +279,7 @@ function OrderManagement() {
                                         <td className="px-5 py-5">
 
                                             <span className="text-sm font-semibold text-[#30372f]">
-                                                ${order.total}
+                                                {order.total} EGP
                                             </span>
 
                                         </td>
@@ -430,7 +430,7 @@ function OrderManagement() {
                                         </p>
 
                                         <p className="mt-1 text-base font-semibold text-[#30372f]">
-                                            ${order.total}
+                                            {order.total} EGP
                                         </p>
 
                                     </div>
@@ -581,14 +581,14 @@ function OrderManagement() {
                                             </p>
 
                                             <p className="mt-1 text-xs text-[#858780]">
-                                                {item.quantity} × ${item.price}
+                                                {item.quantity} × {item.price} EGP
                                             </p>
 
                                         </div>
 
 
                                         <p className="text-sm font-semibold text-[#343b35]">
-                                            ${item.lineTotal}
+                                            {item.lineTotal} EGP
                                         </p>
 
                                     </div>
@@ -607,7 +607,7 @@ function OrderManagement() {
                                 </span>
 
                                 <span className="text-xl font-semibold text-[#30372f]">
-                                    ${selectedOrder.total}
+                                    {selectedOrder.total} EGP
                                 </span>
 
                             </div>

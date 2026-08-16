@@ -18,7 +18,7 @@ function CheckoutItem({ item }) {
       </div>
 
       <span className="text-sm font-semibold">
-        ${(item.price * item.quantity).toFixed(2)}
+        {(item.price * item.quantity).toFixed(2)} EGP
       </span>
     </div>
   );

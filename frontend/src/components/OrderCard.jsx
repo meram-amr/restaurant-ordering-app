@@ -38,12 +38,12 @@ function OrderCard({ order }) {
                             </p>
 
                             <p className="text-sm text-gray-400">
-                                {item.quantity} × ${item.price.toFixed(2)}
+                                {item.quantity} × {item.price.toFixed(2)} EGP
                             </p>
                         </div>
 
                         <p className="font-semibold text-green-950">
-                            ${item.lineTotal.toFixed(2)}
+                            {item.lineTotal.toFixed(2)} EGP
                         </p>
 
                     </div>
@@ -61,7 +61,7 @@ function OrderCard({ order }) {
                     </p>
 
                     <p className="text-xl font-bold text-green-950">
-                        ${order.total.toFixed(2)}
+                        {order.total.toFixed(2)} EGP
                     </p>
                 </div>
 

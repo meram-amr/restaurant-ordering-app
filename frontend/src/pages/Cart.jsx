@@ -34,7 +34,7 @@ function Cart() {
 
           <Link
             to="/menu"
-            className="mt-8 flex items-center gap-2 bg-[#123b29] px-7 py-3 text-xs font-bold text-lime-300 transition hover:bg-lime-300 hover:text-[#081D14]"
+            className="mt-8 flex items-center justify-center gap-2 bg-[#081D14] text-lime-300 border border-green-950 text-green-950 px-5 py-2.5 rounded-lg font-poppins hover:text-lime-200 transition"
           >
             Browse Menu
             <ArrowRight size={15} />
@@ -102,7 +102,7 @@ function Cart() {
                           </h2>
 
                           <p className="mt-1 text-xs text-[#77766f]">
-                            ${price.toFixed(2)} each
+                            {price.toFixed(2)} EGP each
                           </p>
                         </div>
 
@@ -156,7 +156,7 @@ function Cart() {
                       </div>
 
                       <span className="text-sm font-semibold text-[#25251f]">
-                        ${itemTotal.toFixed(2)}
+                        {itemTotal.toFixed(2)} EGP
                       </span>
 
                     </div>
@@ -183,7 +183,7 @@ function Cart() {
               <span>Subtotal</span>
 
               <span className="font-medium text-[#25251f]">
-                ${Number(subtotal).toFixed(2)}
+                {Number(subtotal).toFixed(2)} EGP
               </span>
             </div>
 
@@ -207,7 +207,7 @@ function Cart() {
               </span>
 
               <span className="text-lg font-bold text-[#25251f]">
-                ${Number(subtotal).toFixed(2)}
+                {Number(subtotal).toFixed(2)} EGP
               </span>
 
             </div>

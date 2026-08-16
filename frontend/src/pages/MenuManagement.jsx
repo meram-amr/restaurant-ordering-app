@@ -110,7 +110,7 @@ function MenuManagement() {
           </div>
 
           <span className="whitespace-nowrap font-semibold text-[#203229]">
-            ${Number(item.price).toFixed(2)}
+            {Number(item.price).toFixed(2)} EGP
           </span>
         </div>
 
@@ -264,7 +264,7 @@ function MenuManagement() {
                           </div>
 
                           <span className="whitespace-nowrap font-semibold text-[#203229]">
-                            ${Number(item.price).toFixed(2)}
+                            {Number(item.price).toFixed(2)} EGP
                           </span>
                         </div>
 

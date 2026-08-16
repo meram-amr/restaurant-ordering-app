@@ -36,7 +36,7 @@ function CartItem({ item }) {
           </div>
 
           <p className="mt-1 text-xs text-[#77766f]">
-            ${Number(item.price).toFixed(2)} each
+            {Number(item.price).toFixed(2)} EGP each
           </p>
         </div>
 
@@ -66,7 +66,7 @@ function CartItem({ item }) {
           </div>
 
           <span className="text-sm font-semibold text-[#25251f]">
-            ${itemTotal.toFixed(2)}
+            {itemTotal.toFixed(2)} EGP
           </span>
         </div>
       </div>

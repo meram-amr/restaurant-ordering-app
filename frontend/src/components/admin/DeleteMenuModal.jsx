@@ -71,7 +71,7 @@ function DeleteMenuModal({ item, onClose, onDeleted }) {
             </p>
 
             <p className="mt-0.5 text-xs font-semibold text-[#292923]">
-              ${Number(item.price).toFixed(2)}
+              {Number(item.price).toFixed(2)} EGP
             </p>
 
           </div>

@@ -32,10 +32,9 @@ function OrderSummary({ cart, subtotal }) {
             </div>
 
             <span className="shrink-0 text-xs font-semibold text-[#25251f]">
-              $
               {(
                 Number(item.price) * item.quantity
-              ).toFixed(2)}
+              ).toFixed(2)} EGP
             </span>
           </div>
         ))}
@@ -47,7 +46,7 @@ function OrderSummary({ cart, subtotal }) {
         <span>Subtotal</span>
 
         <span className="font-medium text-[#25251f]">
-          ${Number(subtotal).toFixed(2)}
+          {Number(subtotal).toFixed(2)} EGP
         </span>
       </div>
 
@@ -67,7 +66,7 @@ function OrderSummary({ cart, subtotal }) {
         </span>
 
         <span className="text-lg font-bold text-[#25251f]">
-          ${Number(subtotal).toFixed(2)}
+          {Number(subtotal).toFixed(2)} EGP
         </span>
       </div>
     </aside>

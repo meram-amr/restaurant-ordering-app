@@ -82,8 +82,12 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
               About
             </NavLink>
 
-            {!isAdminloged && (
-              <>
+            {isAdminloged && (
+              <NavLink to="/admin/dashboard" className={navNavLinkStyle}>
+                Dashboard
+              </NavLink>
+            )}
+
                 <NavLink to="/orders" className={navNavLinkStyle}>
                   My Orders
                 </NavLink>
@@ -94,16 +98,10 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
                     <span className="ml-1 text-lime-300">({cartCount})</span>
                   )}
                 </NavLink>
-              </>
-            )}
-            {isAdminloged && (
-              <NavLink to="/admin/dashboard" className={navNavLinkStyle}>
-                Dashboard
-              </NavLink>
-            )}
+
           </div>
         )}
-
+        
         <div className="flex items-center gap-3">
           {user ? (
             <button

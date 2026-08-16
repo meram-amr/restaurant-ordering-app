@@ -10,6 +10,8 @@ function PopularDishes() {
     const fetchDishes = async () => {
       try {
         const response = await getMenu();
+        console.log("MENU RESPONSE:", response);
+        console.log("RESPONSE DATA:", response.data);
         setDishes(response.data);
       } catch (error) {
         console.log(error);
