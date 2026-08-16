@@ -20,11 +20,11 @@ import AdminLayout from "./layout/AdminLayout";
 import { CartProvider } from "./context/CartContext";
 
 import OrderManagement from "./pages/OrderManagement";
+import Soon from "./pages/Soon";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const [user, setUser] = useState(
-    localStorage.getItem("role")
-  );
+  const [user, setUser] = useState(localStorage.getItem("role"));
 
   const navigate = useNavigate();
 
@@ -44,24 +44,13 @@ function App() {
   return (
     <CartProvider>
       <Routes>
+        <Route element={<UserLayout user={user} setUser={setUser} />}>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home />} />
 
-        <Route
-          element={
-            <UserLayout
-              user={user}
-              setUser={setUser}
-            />
-          }
-        >
-          <Route
-            path="/"
-            element={<Home />}
-          />
+          <Route path="/menu" element={<Menu />} />
 
-          <Route
-            path="/menu"
-            element={<Menu />}
-          />
+          <Route path="/register" element={<Register />} />
 
           <Route
             path="/about"
@@ -72,49 +61,26 @@ function App() {
             path="/register"
             element={<Register />}
           />
+          <Route path="/login" element={<Login submit={submit} />} />
 
-          <Route
-            path="/login"
-            element={<Login submit={submit} />}
-          />
+          <Route path="/orders" element={<MyOrders />} />
 
-          <Route
-            path="/orders"
-            element={<MyOrders />}
-          />
+          <Route path="/cart" element={<Cart />} />
 
-          <Route
-            path="/cart"
-            element={<Cart />}
-          />
-
-          <Route
-            path="/checkout"
-            element={<Checkout />}
-          />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
+        <Route path="/support" element={<Soon />} />
 
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
 
-        <Route
-          path="/admin"
-          element={<AdminLayout />}
-        >
-          <Route
-            path="dashboard"
-            element={<AdminDashboard />}
-          />
+          <Route path="menu-management" element={<MenuManagement />} />
+          <Route path="reservations" element={<Soon />} />
+          <Route path="customers" element={<Soon />} />
+          <Route path="settings" element={<Soon />} />
 
-          <Route
-            path="menu-management"
-            element={<MenuManagement />}
-          />
-
-          <Route
-            path="orders"
-            element={<OrderManagement />}
-          />
+          <Route path="orders" element={<OrderManagement />} />
         </Route>
-
       </Routes>
     </CartProvider>
   );
