@@ -1,4 +1,5 @@
-function Hero() { 
+import { NavLink } from "react-router-dom";
+function Hero() {
   return (
     <section className="bg-[#06251b] text-white">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 min-h-[480px]">
@@ -11,22 +12,26 @@ function Hero() {
             <br />
             That Feels Like
             <br />
-            <span className="text-[#b7c96b] italic">
-              Home
-            </span>
+            <span className="text-[#b7c96b] italic">Home</span>
           </h1>
           <p className="text-gray-300 text-sm leading-6 max-w-md mt-5">
-            From fresh ingredients to unforgettable flavors,
-            our dishes are made with love and served with
-            a taste of home.
+            From fresh ingredients to unforgettable flavors, our dishes are made
+            with love and served with a taste of home.
           </p>
-          <div className="flex gap-3 mt-7">
-            <button className="bg-[#c7d66b] text-[#06251b] font-bold px-5 py-3 rounded-md text-sm hover:bg-[#d6e47e] transition">
+          <div className="mt-7 flex gap-3">
+            <NavLink
+              to="/menu"
+              className="rounded-md bg-[#c7d66b] px-5 py-3 text-sm font-bold text-[#06251b] transition hover:bg-[#d6e47e]"
+            >
               Explore Our Menu
-            </button>
-            <button className="border border-lime-300 text-lime-300 font-bold px-5 py-3 rounded-md text-sm hover:bg-lime-300  hover:text-[#081D14] transition">
+            </NavLink>
+
+            <NavLink
+              to="/orders"
+              className="rounded-md border border-lime-300 px-5 py-3 text-sm font-bold text-lime-300 transition hover:bg-lime-300 hover:text-[#081D14]"
+            >
               Book a Table
-            </button>
+            </NavLink>
           </div>
         </div>
         <div className="flex items-center justify-center p-6">
