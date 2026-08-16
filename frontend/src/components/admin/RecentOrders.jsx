@@ -29,7 +29,7 @@ const getTotal = (order) => {
     Number(order.total) ||
     0;
 
-  return `$${total.toFixed(2)}`;
+  return `${total.toFixed(2)} EGP`;
 };
 
 export default function RecentOrders({ orders = [] }) {

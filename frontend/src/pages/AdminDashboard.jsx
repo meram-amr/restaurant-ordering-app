@@ -79,9 +79,9 @@ export default function AdminDashboard() {
   const stats = [
     {
       title: "Total Revenue",
-      value: `$${totalRevenue.toLocaleString("en-US", {
+      value: `${totalRevenue.toLocaleString("en-US", {
         minimumFractionDigits: 2,
-      })}`,
+      })}EGP`,
       change: `${orders.length} orders`,
       icon: <DollarSign size={20} />,
     },
