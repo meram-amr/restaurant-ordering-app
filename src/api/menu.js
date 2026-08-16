@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+export const API_URL = import.meta.env.VITE_API_URL;
 
 export const getMenu = async (category = "") => {
   const response = await axios.get(`${API_URL}/menu`, {
@@ -10,11 +10,10 @@ export const getMenu = async (category = "") => {
   return response.data;
 };
 
-export const getunavailableMenu = async (category = "") => {
+export const getunavailableMenu = async () => {
   const response = await axios.get(`${API_URL}/menu`, {
     params: {
       available: false,
-      ...(category && { category }),
     },
   });
 
@@ -37,17 +36,15 @@ export const updateMenuItem = async (id, data, token) => {
       Authorization: `Bearer ${token}`,
     },
   });
+  return response.data;
 };
 
 export const deleteMenuItem = async (id, token) => {
-  const response = await axios.delete(
-    `${API_URL}/menu/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.delete(`${API_URL}/menu/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return response.data;
 };

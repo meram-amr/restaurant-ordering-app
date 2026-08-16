@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-
-const API = "http://localhost:5000/api";
+import { getunavailableMenu } from "../../api/menu";
 
 export default function LowStockAlert() {
   const [lowStock, setLowStock] = useState([]);
@@ -10,13 +8,9 @@ export default function LowStockAlert() {
   useEffect(() => {
     const getLowStock = async () => {
       try {
-        const response = await axios.get(`${API}/menu`, {
-          params: {
-            available: false,
-          },
-        });
+        const response = await getunavailableMenu();
 
-        setLowStock(response.data?.data || []);
+        setLowStock(response.data || []);
       } catch (err) {
         console.error("Error getting unavailable menu:", err);
       }

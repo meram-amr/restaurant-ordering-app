@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   Search,
   Bell,
@@ -12,8 +11,9 @@ import StatCard from "../components/admin/StatCard";
 import RecentOrders from "../components/admin/RecentOrders";
 import MenuPerformance from "../components/admin/MenuPerformance";
 import LowStockAlert from "../components/admin/LowStockAlert";
+import { getAllOrders } from "../api/orders";
+import { getMenu } from "../api/menu";
 
-const API = "http://localhost:5000/api";
 
 export default function AdminDashboard() {
   const [orders, setOrders] = useState([]);
@@ -29,17 +29,13 @@ export default function AdminDashboard() {
         setLoading(true);
         setError("");
 
-        const ordersResponse = await axios.get(`${API}/orders`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const ordersResponse = await getAllOrders(token);
+  
+        setOrders(ordersResponse?.data || []);
 
-        setOrders(ordersResponse.data?.data || []);
+        const menuResponse = await getMenu();
 
-        const menuResponse = await axios.get(`${API}/menu`);
-
-        setMenu(menuResponse.data?.data || []);
+        setMenu(menuResponse?.data || []);
       } catch (err) {
         console.error("Dashboard error:", err);
 

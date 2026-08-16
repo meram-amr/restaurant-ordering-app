@@ -27,7 +27,6 @@ export default function MenuPerformance({ menu = [], orders = [] }) {
 
   const max = Math.max(...performance.map((item) => item.orders), 1);
 
-  console.log(performance);
 
   return (
     <section className="rounded-lg border border-[#deded5] bg-white p-6">
