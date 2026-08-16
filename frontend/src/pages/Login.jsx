@@ -90,7 +90,7 @@ export default function LoginPage({ submit }) {
             <img
               src="/public/Pasted image  .png"
               alt="Grilled salmon with vegetables"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover rounded-[30px]"
             />
           </div>
 
