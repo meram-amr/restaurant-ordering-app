@@ -51,7 +51,6 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
   const logout = () => {
     localStorage.removeItem("loggedin");
     localStorage.removeItem("role");
-    localStorage.removeItem("user");
 
     window.location.href = "/login";
   };

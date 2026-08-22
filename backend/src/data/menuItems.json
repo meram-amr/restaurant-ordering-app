@@ -20,16 +20,6 @@
     "createdAt": "2026-01-05T10:10:00.000Z"
   },
   {
-    "id": "4",
-    "name": "Molokhia with Rabbit",
-    "category": "Main Course",
-    "price": 210,
-    "description": "Traditional molokhia stew served with rice and your choice of protein.",
-    "image": "https://i.pinimg.com/1200x/ef/a7/72/efa772f08fa8497207ce77a52f8081f1.jpg",
-    "available": true,
-    "createdAt": "2026-01-05T10:15:00.000Z"
-  },
-  {
     "id": "5",
     "name": "Beef Burger",
     "category": "Main Course",

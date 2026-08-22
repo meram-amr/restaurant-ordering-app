@@ -22,6 +22,7 @@ import { CartProvider } from "./context/CartContext";
 import OrderManagement from "./pages/OrderManagement";
 import Soon from "./pages/Soon";
 import NotFound from "./pages/NotFound";
+import AdminRoute from "./layout/AdminRoute";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("role"));
@@ -52,15 +53,9 @@ function App() {
 
           <Route path="/register" element={<Register />} />
 
-          <Route
-            path="/about"
-            element={<About />}
-          />
+          <Route path="/about" element={<About />} />
 
-          <Route
-            path="/register"
-            element={<Register />}
-          />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login submit={submit} />} />
 
           <Route path="/orders" element={<MyOrders />} />
@@ -70,15 +65,15 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Route>
         <Route path="/support" element={<Soon />} />
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-
-          <Route path="menu-management" element={<MenuManagement />} />
-          <Route path="reservations" element={<Soon />} />
-          <Route path="customers" element={<Soon />} />
-          <Route path="settings" element={<Soon />} />
-
+            <Route path="menu-management" element={<MenuManagement />} />
+            <Route path="reservations" element={<Soon />} />
+            <Route path="customers" element={<Soon />} />
+            <Route path="settings" element={<Soon />} />
+          </Route>
           <Route path="orders" element={<OrderManagement />} />
         </Route>
       </Routes>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
+import { login } from "../api/auth";
 
 const Field = ({
   label,
@@ -60,17 +61,14 @@ export default function LoginPage({ submit }) {
     setSuccess("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData,
-      );
+      const response = await login(formData);
 
-      localStorage.setItem("loggedin", response.data.data.token);
-      localStorage.setItem("role", response.data.data.user.role);
+      localStorage.setItem("loggedin", response.data.token);
+      localStorage.setItem("role", response.data.user.role);
 
       setSuccess("Login successful!");
-      submit();
 
+      submit();
     } catch (err) {
       console.error("Login error:", err);
 
@@ -81,14 +79,13 @@ export default function LoginPage({ submit }) {
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen bg-[#f8f7f3]">
       <div className="mx-auto flex min-h-screen w-full max-w-[1240px] items-center justify-center px-8 py-12">
         <div className="grid w-full grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-[80px]">
           <div className="h-[540px] w-full overflow-hidden rounded-[3px] sm:h-[600px] md:h-[620px] lg:h-[650px]">
             <img
-                 src="https://i.pinimg.com/736x/d0/7e/13/d07e1355c10427c1fff384df36bcfcc8.jpg"
+              src="https://i.pinimg.com/736x/d0/7e/13/d07e1355c10427c1fff384df36bcfcc8.jpg"
               alt="Grilled salmon with vegetables"
               className="h-full w-full object-cover rounded-[30px]"
             />
