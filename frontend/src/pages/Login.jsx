@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import axios from "axios";
+import { login as loginUser } from "../api/auth";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
 
 const Field = ({
@@ -36,7 +36,7 @@ const Field = ({
 );
 
 export default function LoginPage({ submit }) {
-  const { login } = useAuth(); // استدعاء دالة login من AuthContext
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -64,23 +64,22 @@ export default function LoginPage({ submit }) {
     setSuccess("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        formData
-      );
+      const response = await loginUser(formData);
 
-      const { user, token } = response.data.data;
+      const { user, token } = response.data;
 
-      // حفظ الـ user والـ token عن طريق AuthContext
+      // Save user and token through AuthContext
       login(user, token);
 
       setSuccess("Login successful!");
+
       submit();
     } catch (err) {
       console.error("Login error:", err);
 
       setError(
-        err.response?.data?.message || "Login failed. Please try again."
+        err.response?.data?.message ||
+          "Login failed. Please try again."
       );
     } finally {
       setLoading(false);
@@ -91,6 +90,7 @@ export default function LoginPage({ submit }) {
     <div className="min-h-screen bg-[#f8f7f3]">
       <div className="mx-auto flex min-h-screen w-full max-w-[1240px] items-center justify-center px-8 py-12">
         <div className="grid w-full grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-[80px]">
+
           <div className="h-[540px] w-full overflow-hidden rounded-[3px] sm:h-[600px] md:h-[620px] lg:h-[650px]">
             <img
               src="https://i.pinimg.com/736x/d0/7e/13/d07e1355c10427c1fff384df36bcfcc8.jpg"
@@ -100,6 +100,7 @@ export default function LoginPage({ submit }) {
           </div>
 
           <div className="mx-auto w-full max-w-[420px]">
+
             <div className="mb-3 flex items-center justify-center gap-2">
               <Leaf
                 size={23}
@@ -123,6 +124,7 @@ export default function LoginPage({ submit }) {
             </p>
 
             <form onSubmit={handleSubmit}>
+
               <Field
                 label="EMAIL ADDRESS"
                 icon={<Mail size={18} />}
@@ -170,6 +172,7 @@ export default function LoginPage({ submit }) {
                 className="flex h-[43px] w-full items-center justify-center gap-3 bg-[#c3d36b] text-[12px] font-semibold tracking-[0.2px] text-[#30352a] transition hover:bg-[#b5c75b] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Signing In..." : "Sign In"}
+
                 {!loading && <ArrowRight size={17} />}
               </button>
             </form>
@@ -183,6 +186,7 @@ export default function LoginPage({ submit }) {
                 Create Account
               </a>
             </p>
+
           </div>
         </div>
       </div>
