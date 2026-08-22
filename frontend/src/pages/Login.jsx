@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
 import { login } from "../api/auth";
 
