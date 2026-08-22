@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import { LuLeaf, LuMenu, LuX } from "react-icons/lu";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
-function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
+function Navbar({ isAdmin = false, setSidebarOpen }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const { cartCount } = useCart();
-
-  const isAdminloged = localStorage.getItem("role") === "admin";
+  const { role, isAuthenticated, logout } = useAuth();
 
   const navNavLinkStyle = ({ isActive }) =>
     `relative font-poppins transition-colors duration-300 ${
@@ -24,15 +22,10 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
   after:transition-all
   after:duration-300
   ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}`;
+
   const handleLogout = () => {
-    localStorage.removeItem("loggedin");
-    localStorage.removeItem("role");
-    localStorage.removeItem("user");
-
-    setUser(null);
+    logout();
     setIsOpen(false);
-
-    window.location.href = "/login";
   };
 
   const closeMobileMenu = () => {
@@ -46,12 +39,10 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
           <div className="flex flex-col">
             <div className="flex items-center">
               <LuLeaf className="mr-2 text-xl text-lime-300" />
-
               <h1 className="font-playfair text-2xl font-bold tracking-widest text-white">
                 AVERO
               </h1>
             </div>
-
             <p className="font-poppins text-sm text-lime-300">
               Where Flavor Meets Elegance
             </p>
@@ -63,7 +54,6 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
             <NavLink to="/" className={navNavLinkStyle}>
               Home
             </NavLink>
-
             <NavLink to="/admin/dashboard" className={navNavLinkStyle}>
               Dashboard
             </NavLink>
@@ -73,37 +63,34 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
             <NavLink to="/" className={navNavLinkStyle}>
               Home
             </NavLink>
-
             <NavLink to="/menu" className={navNavLinkStyle}>
               Menu
             </NavLink>
-
             <NavLink to="/about" className={navNavLinkStyle}>
               About
             </NavLink>
 
-            {isAdminloged && (
+            {role === "admin" && (
               <NavLink to="/admin/dashboard" className={navNavLinkStyle}>
                 Dashboard
               </NavLink>
             )}
 
-                <NavLink to="/orders" className={navNavLinkStyle}>
-                  My Orders
-                </NavLink>
+            <NavLink to="/orders" className={navNavLinkStyle}>
+              My Orders
+            </NavLink>
 
-                <NavLink to="/cart" className={navNavLinkStyle}>
-                  Cart
-                  {cartCount > 0 && (
-                    <span className="ml-1 text-lime-300">({cartCount})</span>
-                  )}
-                </NavLink>
-
+            <NavLink to="/cart" className={navNavLinkStyle}>
+              Cart
+              {cartCount > 0 && (
+                <span className="ml-1 text-lime-300">({cartCount})</span>
+              )}
+            </NavLink>
           </div>
         )}
-        
+
         <div className="flex items-center gap-3">
-          {user ? (
+          {isAuthenticated ? (
             <button
               onClick={handleLogout}
               className="hidden rounded-md bg-lime-300 px-4 py-2 font-poppins font-semibold text-green-900 transition-all duration-300 hover:bg-lime-400 md:block"
@@ -144,50 +131,26 @@ function Navbar({ user, setUser, isAdmin = false, setSidebarOpen }) {
           }`}
         >
           <div className="flex flex-col items-center gap-5 pb-4 font-poppins font-semibold">
-            <NavLink
-              to="/"
-              onClick={closeMobileMenu}
-              className={navNavLinkStyle}
-            >
+            <NavLink to="/" onClick={closeMobileMenu} className={navNavLinkStyle}>
               Home
             </NavLink>
-
-            <NavLink
-              to="/menu"
-              onClick={closeMobileMenu}
-              className={navNavLinkStyle}
-            >
+            <NavLink to="/menu" onClick={closeMobileMenu} className={navNavLinkStyle}>
               Menu
             </NavLink>
-
-            <NavLink
-              to="/about"
-              onClick={closeMobileMenu}
-              className={navNavLinkStyle}
-            >
+            <NavLink to="/about" onClick={closeMobileMenu} className={navNavLinkStyle}>
               About
             </NavLink>
-
-            <NavLink
-              to="/orders"
-              onClick={closeMobileMenu}
-              className={navNavLinkStyle}
-            >
+            <NavLink to="/orders" onClick={closeMobileMenu} className={navNavLinkStyle}>
               My Orders
             </NavLink>
-
-            <NavLink
-              to="/cart"
-              onClick={closeMobileMenu}
-              className={navNavLinkStyle}
-            >
+            <NavLink to="/cart" onClick={closeMobileMenu} className={navNavLinkStyle}>
               Cart
               {cartCount > 0 && (
                 <span className="ml-1 text-lime-300">({cartCount})</span>
               )}
             </NavLink>
 
-            {user ? (
+            {isAuthenticated ? (
               <button
                 onClick={handleLogout}
                 className="rounded-md bg-lime-300 px-6 py-2 text-green-900 transition-all duration-300 hover:bg-lime-400"

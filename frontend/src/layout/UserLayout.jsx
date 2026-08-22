@@ -2,16 +2,16 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-function UserLayout({ user, setUser }) {
-    return (
-        <>
-            <Navbar user={user} setUser={setUser} />
+function UserLayout() {
+  return (
+    <>
+      <Navbar />
 
-            <Outlet />
+      <Outlet />
 
-            <Footer />
-        </>
-    );
+      <Footer />
+    </>
+  );
 }
 
 export default UserLayout;

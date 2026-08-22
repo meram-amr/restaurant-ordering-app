@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import axios from "axios";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
-import { login } from "../api/auth";
 
 const Field = ({
   label,
@@ -35,6 +36,8 @@ const Field = ({
 );
 
 export default function LoginPage({ submit }) {
+  const { login } = useAuth(); // استدعاء دالة login من AuthContext
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -52,6 +55,7 @@ export default function LoginPage({ submit }) {
       [name]: value,
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,24 +64,29 @@ export default function LoginPage({ submit }) {
     setSuccess("");
 
     try {
-      const response = await login(formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        formData
+      );
 
-      localStorage.setItem("loggedin", response.data.token);
-      localStorage.setItem("role", response.data.user.role);
+      const { user, token } = response.data.data;
+
+      // حفظ الـ user والـ token عن طريق AuthContext
+      login(user, token);
 
       setSuccess("Login successful!");
-
       submit();
     } catch (err) {
       console.error("Login error:", err);
 
       setError(
-        err.response?.data?.message || "Login failed. Please try again.",
+        err.response?.data?.message || "Login failed. Please try again."
       );
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen bg-[#f8f7f3]">
       <div className="mx-auto flex min-h-screen w-full max-w-[1240px] items-center justify-center px-8 py-12">
@@ -86,7 +95,7 @@ export default function LoginPage({ submit }) {
             <img
               src="https://i.pinimg.com/736x/d0/7e/13/d07e1355c10427c1fff384df36bcfcc8.jpg"
               alt="Grilled salmon with vegetables"
-              className="h-full w-full object-cover rounded-[30px]"
+              className="h-full w-full rounded-[30px] object-cover"
             />
           </div>
 
