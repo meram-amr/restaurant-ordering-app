@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
+import { useAuth } from "../context/AuthContext";
+
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/admin/Sidebar";
 import Footer from "../components/Footer";
@@ -21,7 +23,7 @@ function AdminLayout() {
         setLoading(true);
         setError("");
 
-        const token = localStorage.getItem("loggedin");
+        const token = useAuth("loggedin");
 
         if (!token) {
           navigate("/login", { replace: true });

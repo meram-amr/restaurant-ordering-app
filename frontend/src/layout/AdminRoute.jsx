@@ -1,8 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
 
+import { useAuth } from "../context/AuthContext";
+
 function AdminRoute() {
-  const token = localStorage.getItem("loggedin");
-  const role = localStorage.getItem("role");
+  const token = useAuth("loggedin");
+  const role = useAuth("role");
 
   if (!token) {
     return <Navigate to="/login" replace />;

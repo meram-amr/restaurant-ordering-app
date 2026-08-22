@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import {
     Eye,
     Check,
@@ -21,7 +22,7 @@ function OrderManagement() {
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [updatingId, setUpdatingId] = useState(null);
 
-    const token = localStorage.getItem("loggedin");
+    const token = useAuth("loggedin");
 
     // =========================
     // GET ALL ORDERS

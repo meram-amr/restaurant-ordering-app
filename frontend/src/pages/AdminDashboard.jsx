@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+
+import { useAuth } from "../context/AuthContext";
+
 import {
   Search,
   Bell,
@@ -21,7 +24,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const token = localStorage.getItem("loggedin");
+  const token = useAuth("loggedin");
 
   useEffect(() => {
     const loadDashboard = async () => {

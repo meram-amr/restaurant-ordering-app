@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMyOrders } from "../api/orders";
 
+import { useAuth } from "../context/AuthContext";
+
 import OrderCard from "../components/OrderCard";
 import EmptyOrders from "../components/EmptyOrders";
 
@@ -18,7 +20,7 @@ function MyOrders() {
       setLoading(true);
       setError("");
 
-      const token = localStorage.getItem("loggedin");
+      const token = useAuth("loggedin");
       if (!token) {
         setError("You must be logged in to view your orders.");
         setLoading(false);

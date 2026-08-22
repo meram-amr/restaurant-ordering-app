@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../context/AuthContext";
+
 import { useCart } from "../context/CartContext";
 import { createOrder } from "../api/orders";
 
@@ -174,7 +176,7 @@ function Checkout() {
       return;
     }
 
-    const token = localStorage.getItem("loggedin");
+    const token = useAuth("loggedin");
 
     if (!token) {
       navigate("/login");

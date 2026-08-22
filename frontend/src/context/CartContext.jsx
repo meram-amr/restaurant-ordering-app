@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+import { useAuth } from "../context/AuthContext";
+
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
     try {
-      const savedCart = localStorage.getItem("cart");
+      const savedCart = useAuth("cart");
       return savedCart ? JSON.parse(savedCart) : [];
     } catch {
       return [];

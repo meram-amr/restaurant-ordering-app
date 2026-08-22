@@ -2,6 +2,8 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { updateMenuItem } from "../../api/menu";
 
+import { useAuth } from "../context/AuthContext";
+
 function EditMenuModal({ item, onClose, onUpdated }) {
   const [formData, setFormData] = useState({
     name: item?.name || "",
@@ -79,7 +81,7 @@ function EditMenuModal({ item, onClose, onUpdated }) {
   try {
     setLoading(true);
 
-    const token = localStorage.getItem("loggedin");
+    const token = useAuth("loggedin");
 
     if (!token) {
       setError("You must be logged in as an admin.");
