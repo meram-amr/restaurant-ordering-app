@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { updateMenuItem } from "../../api/menu";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 function EditMenuModal({ item, onClose, onUpdated }) {
   const [formData, setFormData] = useState({

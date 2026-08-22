@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IoWarning } from "react-icons/io5";
 import { deleteMenuItem } from "../../api/menu";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 function DeleteMenuModal({ item, onClose, onDeleted }) {
   const [loading, setLoading] = useState(false);
