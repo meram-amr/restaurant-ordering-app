@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 import {
     Eye,
     Check,
@@ -22,7 +22,7 @@ function OrderManagement() {
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [updatingId, setUpdatingId] = useState(null);
 
-    const token = useAuth("loggedin");
+    const { token } = useAuth();
 
     // =========================
     // GET ALL ORDERS
@@ -50,7 +50,7 @@ function OrderManagement() {
 
     useEffect(() => {
         fetchOrders();
-    }, []);
+    }, [token]);
 
     const handleStatusChange = async (orderId, status) => {
         try {
@@ -679,7 +679,7 @@ function OrderManagement() {
                                         onClick={() =>
                                             handleStatusChange(
                                                 selectedOrder.id,
-                                                "rejected"
+                                                "cancelled"
                                             )
                                         }
                                         className="flex flex-1 items-center justify-center gap-2 rounded-md bg-red-100 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-200 disabled:opacity-50"

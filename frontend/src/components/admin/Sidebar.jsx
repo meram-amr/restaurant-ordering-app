@@ -12,7 +12,9 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../../context/useAuth";
 
 const items = [
   {
@@ -48,11 +50,14 @@ const items = [
 ];
 
 export default function Sidebar({ user, isOpen, setIsOpen }) {
-  const logout = () => {
-    localStorage.removeItem("loggedin");
-    localStorage.removeItem("role");
+  const navigate = useNavigate();
 
-    window.location.href = "/login";
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+
+    navigate("/login", { replace: true });
   };
 
   const closeSidebar = () => {
@@ -164,7 +169,7 @@ export default function Sidebar({ user, isOpen, setIsOpen }) {
             </Link>
 
             <button
-              onClick={logout}
+              onClick={handleLogout}
               className="flex w-full items-center gap-4 px-3 text-sm font-semibold text-[#555d57]"
             >
               <LogOut size={18} />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LuLeaf, LuMenu, LuX } from "react-icons/lu";
 import { useCart } from "../context/CartContext";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function Navbar({ isAdmin = false, setSidebarOpen }) {
   const [isOpen, setIsOpen] = useState(false);

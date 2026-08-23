@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 import { useCart } from "../context/CartContext";
 import { createOrder } from "../api/orders";
@@ -18,6 +18,8 @@ function Checkout() {
     subtotal,
     clearCart,
   } = useCart();
+
+  const { token, logout } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -176,8 +178,6 @@ function Checkout() {
       return;
     }
 
-    const token = useAuth("loggedin");
-
     if (!token) {
       navigate("/login");
       return;
@@ -206,8 +206,7 @@ function Checkout() {
       console.error("Checkout error:", err);
 
       if (err.response?.status === 401) {
-        localStorage.removeItem("loggedin");
-        localStorage.removeItem("role");
+        logout();
 
         navigate("/login");
         return;

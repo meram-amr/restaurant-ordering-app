@@ -2,18 +2,18 @@ import { useState } from "react";
 import { IoWarning } from "react-icons/io5";
 import { deleteMenuItem } from "../../api/menu";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
 
 function DeleteMenuModal({ item, onClose, onDeleted }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const { token } = useAuth();
+
   const handleDelete = async () => {
     try {
       setLoading(true);
       setError("");
-
-      const token = useAuth("loggedin");
 
       await deleteMenuItem(item.id, token);
 

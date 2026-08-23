@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 import {
   Search,
@@ -24,7 +24,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const token = useAuth("loggedin");
+  const { token } = useAuth();
 
   useEffect(() => {
     const loadDashboard = async () => {
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
     };
 
     loadDashboard();
-  }, []);
+  }, [token]);
 
   const totalRevenue = orders.reduce((total, order) => {
     const amount = Number(order.total) || 0;

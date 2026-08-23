@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 import { login as loginUser } from "../api/auth";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
 

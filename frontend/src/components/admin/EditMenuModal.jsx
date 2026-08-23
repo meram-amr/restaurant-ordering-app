@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { updateMenuItem } from "../../api/menu";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
 
 function EditMenuModal({ item, onClose, onUpdated }) {
   const [formData, setFormData] = useState({
@@ -16,6 +16,8 @@ function EditMenuModal({ item, onClose, onUpdated }) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const { token } = useAuth();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -80,8 +82,6 @@ function EditMenuModal({ item, onClose, onUpdated }) {
 
   try {
     setLoading(true);
-
-    const token = useAuth("loggedin");
 
     if (!token) {
       setError("You must be logged in as an admin.");

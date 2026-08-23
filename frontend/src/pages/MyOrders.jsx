@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMyOrders } from "../api/orders";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 import OrderCard from "../components/OrderCard";
 import EmptyOrders from "../components/EmptyOrders";
@@ -11,16 +11,13 @@ function MyOrders() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetchOrders();
-  }, []);
+  const { token } = useAuth();
 
   const fetchOrders = async () => {
     try {
       setLoading(true);
       setError("");
 
-      const token = useAuth("loggedin");
       if (!token) {
         setError("You must be logged in to view your orders.");
         setLoading(false);
@@ -36,6 +33,10 @@ function MyOrders() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchOrders();
+  }, [token]);
 
   if (loading) {
     return (

@@ -1,10 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function AdminRoute() {
-  const token = useAuth("loggedin");
-  const role = useAuth("role");
+  const { token, role } = useAuth();
 
   if (!token) {
     return <Navigate to="/login" replace />;

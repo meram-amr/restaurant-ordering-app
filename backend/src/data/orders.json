@@ -81,5 +81,35 @@
     "total": 325,
     "status": "completed",
     "createdAt": "2026-08-17T15:00:09.564Z"
+  },
+  {
+    "id": "1787443654544",
+    "userId": "1786536783672",
+    "items": [
+      {
+        "menuItemId": "10",
+        "name": "Fattoush Salad",
+        "price": 55,
+        "quantity": 1,
+        "lineTotal": 55
+      },
+      {
+        "menuItemId": "11",
+        "name": "Cheese Sambousek (6 pcs)",
+        "price": 70,
+        "quantity": 1,
+        "lineTotal": 70
+      },
+      {
+        "menuItemId": "12",
+        "name": "Potato Balls",
+        "price": 50,
+        "quantity": 1,
+        "lineTotal": 50
+      }
+    ],
+    "total": 175,
+    "status": "cancelled",
+    "createdAt": "2026-08-23T00:07:34.544Z"
   }
 ]

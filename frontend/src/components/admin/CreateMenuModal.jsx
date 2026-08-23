@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { createMenuItem } from "../../api/menu";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
 
 function CreateMenuModal({ onClose, onCreated }) {
 
@@ -16,6 +16,8 @@ function CreateMenuModal({ onClose, onCreated }) {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+
+    const { token } = useAuth();
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
@@ -91,8 +93,6 @@ function CreateMenuModal({ onClose, onCreated }) {
 
     try {
         setLoading(true);
-
-        const token = useAuth("loggedin");
 
         if (!token) {
             setError("You must be logged in as an admin.");

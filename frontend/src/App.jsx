@@ -17,7 +17,8 @@ import UserLayout from "./layout/UserLayout";
 import AdminLayout from "./layout/AdminLayout";
 import AdminRoute from "./layout/AdminRoute";
 
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthProvider";
+import { useAuth } from "./context/useAuth";
 import { CartProvider } from "./context/CartContext";
 
 import OrderManagement from "./pages/OrderManagement";
