@@ -355,7 +355,7 @@ function OrderManagement() {
                                                             onClick={() =>
                                                                 handleStatusChange(
                                                                     order.id,
-                                                                    "rejected"
+                                                                    "cancelled"
                                                                 )
                                                             }
                                                             className="flex h-9 w-9 items-center justify-center rounded-md bg-red-100 text-red-600 transition hover:bg-red-200 disabled:opacity-50"
@@ -474,7 +474,7 @@ function OrderManagement() {
                                                     onClick={() =>
                                                         handleStatusChange(
                                                             order.id,
-                                                            "rejected"
+                                                            "cancelled"
                                                         )
                                                     }
                                                     className="flex h-9 w-9 items-center justify-center rounded-md bg-red-100 text-red-600"

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
@@ -18,7 +18,6 @@ import AdminLayout from "./layout/AdminLayout";
 import AdminRoute from "./layout/AdminRoute";
 
 import { AuthProvider } from "./context/AuthProvider";
-import { useAuth } from "./context/useAuth";
 import { CartProvider } from "./context/CartContext";
 
 import OrderManagement from "./pages/OrderManagement";
@@ -26,17 +25,7 @@ import Soon from "./pages/Soon";
 import NotFound from "./pages/NotFound";
 
 function AppContent() {
-  const navigate = useNavigate();
-  const { role } = useAuth();
 
-  // بعد تسجيل الدخول
-  const submit = () => {
-    if (role === "admin") {
-      navigate("/admin/dashboard");
-    } else {
-      navigate("/");
-    }
-  };
 
   return (
     <Routes>
@@ -50,7 +39,7 @@ function AppContent() {
 
         <Route path="/about" element={<About />} />
 
-        <Route path="/login" element={<Login submit={submit} />} />
+        <Route path="/login" element={<Login  />} />
 
         <Route path="/orders" element={<MyOrders />} />
 

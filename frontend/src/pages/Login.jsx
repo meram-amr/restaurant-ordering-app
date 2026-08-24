@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../context/useAuth";
 import { login as loginUser } from "../api/auth";
 import { Mail, Lock, ArrowRight, Leaf } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Field = ({
   label,
@@ -35,7 +36,8 @@ const Field = ({
   </div>
 );
 
-export default function LoginPage({ submit }) {
+export default function LoginPage() {
+  const navigate = useNavigate();
   const { login } = useAuth();
 
   const [formData, setFormData] = useState({
@@ -68,18 +70,20 @@ export default function LoginPage({ submit }) {
 
       const { user, token } = response.data;
 
-      // Save user and token through AuthContext
       login(user, token);
 
       setSuccess("Login successful!");
 
-      submit();
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       console.error("Login error:", err);
 
       setError(
-        err.response?.data?.message ||
-          "Login failed. Please try again."
+        err.response?.data?.message || "Login failed. Please try again.",
       );
     } finally {
       setLoading(false);
@@ -90,7 +94,6 @@ export default function LoginPage({ submit }) {
     <div className="min-h-screen bg-[#f8f7f3]">
       <div className="mx-auto flex min-h-screen w-full max-w-[1240px] items-center justify-center px-8 py-12">
         <div className="grid w-full grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-[80px]">
-
           <div className="h-[540px] w-full overflow-hidden rounded-[3px] sm:h-[600px] md:h-[620px] lg:h-[650px]">
             <img
               src="https://i.pinimg.com/736x/d0/7e/13/d07e1355c10427c1fff384df36bcfcc8.jpg"
@@ -100,7 +103,6 @@ export default function LoginPage({ submit }) {
           </div>
 
           <div className="mx-auto w-full max-w-[420px]">
-
             <div className="mb-3 flex items-center justify-center gap-2">
               <Leaf
                 size={23}
@@ -124,7 +126,6 @@ export default function LoginPage({ submit }) {
             </p>
 
             <form onSubmit={handleSubmit}>
-
               <Field
                 label="EMAIL ADDRESS"
                 icon={<Mail size={18} />}
@@ -186,7 +187,6 @@ export default function LoginPage({ submit }) {
                 Create Account
               </a>
             </p>
-
           </div>
         </div>
       </div>
